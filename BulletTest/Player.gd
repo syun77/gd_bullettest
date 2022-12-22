@@ -36,8 +36,7 @@ func _shot() -> void:
 		deg += rand_range(-rng, rng)
 	
 	var spd = 1500
-	_create_shot(deg, spd)
-	var shot = ShotObj.instance()
+	var shot = _create_shot(deg, spd)
 	
 	if _shot_cnt%4 == 0:
 		if Common.is_offset():
