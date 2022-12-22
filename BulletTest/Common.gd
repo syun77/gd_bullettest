@@ -17,6 +17,7 @@ var _is_hitslow = false
 var _hitslow_rate = 40
 var _hitslow_timer = 0.0
 var _is_blur = false
+var _is_trail = false
 
 func setup(layers) -> void:
 	_layers = layers
@@ -99,3 +100,8 @@ func set_blur(b:bool) -> void:
 	_is_blur = b
 func is_blur() -> bool:
 	return _is_blur
+
+func set_trail(b:bool) -> void:
+	_is_trail = b
+func is_trail() -> bool:
+	return _is_trail

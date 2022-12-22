@@ -8,6 +8,7 @@ onready var _camera = $MainCamera
 
 onready var _shot_layer = $ShotLayer
 onready var _particle_layer = $ParticleLayer
+onready var _hdr = $WorldEnvironment
 
 onready var _change_spr = $UILayer/ChangeSprButton
 onready var _change_spr_txt = $UILayer/ChangeSprButton/Label
@@ -31,7 +32,10 @@ onready var _hitslowspeed_rate = $UILayer/HitSlowRate
 onready var _hitslowspeed_rate_txt = $UILayer/HitSlowRate/Label
 onready var _blur_btn = $UILayer/BlurButton
 onready var _blur_txt = $UILayer/BlurButton/Label
-
+onready var _trail_btn = $UILayer/TrailButton
+onready var _trail_txt = $UILayer/TrailButton/Label
+onready var _hdr_btn = $UILayer/HDRButton
+onready var _hdr_txt = $UILayer/HDRButton/Label
 
 func _ready() -> void:
 	var layers = {
@@ -116,7 +120,21 @@ func _process(delta: float) -> void:
 	else:
 		Common.set_blur(false)
 		_blur_txt.modulate = Color.dimgray
-
+	
+	if _trail_btn.pressed:
+		Common.set_trail(true)
+		_trail_txt.modulate = Color.white
+	else:
+		Common.set_trail(false)
+		_trail_txt.modulate = Color.dimgray
+	
+	if _hdr_btn.pressed:
+		_hdr.environment.glow_enabled = true
+		_hdr_txt.modulate = Color.white
+	else:
+		_hdr.environment.glow_enabled = false
+		_hdr_txt.modulate = Color.dimgray
+		
 	_update_screen_shake(delta)
 	Common.update_hitslow(delta)
 

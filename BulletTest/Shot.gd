@@ -33,8 +33,9 @@ func _ready() -> void:
 		var rate = 1.0 - ((i+1) / 8.0)
 		var spr:Sprite = get_node("./Sprite%d"%i)
 		spr.texture = _spr.texture
-		#spr.scale.x = rate
-		#spr.scale.y = rate
+		if Common.is_trail():
+			spr.scale.x = rate
+			spr.scale.y = rate
 		spr.modulate.a = rate
 		_spr_list.append(spr)
 		
