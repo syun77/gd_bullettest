@@ -1,6 +1,7 @@
 extends Node2D
 
 const ShotObj = preload("res://Shot.tscn")
+const Shot2Obj = preload("res://Shot2.tscn")
 
 var _shot_timer = 0.0
 var _shot_cnt = 0
@@ -35,24 +36,19 @@ func _shot() -> void:
 		deg += rand_range(-rng, rng)
 	
 	var spd = 1500
+	_create_shot(deg, spd)
 	var shot = ShotObj.instance()
-	shot.position = position
 	
 	if _shot_cnt%4 == 0:
 		if Common.is_offset():
 			shot.position.y -= 12
 	
-	shot.set_velocity(deg, spd)
-	Common.get_layer("shot").add_child(shot)
 	if Common.is_screen_shake():
 		# ショットガン
 		for i in range(12):
-			var shot2 = ShotObj.instance()
-			shot2.position = position
 			var deg2 = deg + rand_range(-10, 10)
 			var speed = spd * rand_range(0.8, 1.0)
-			shot2.set_velocity(deg2, speed)
-			Common.get_layer("shot").add_child(shot2)
+			_create_shot(deg2, speed)
 		# カメラ揺れ開始.
 		Common.start_screen_shake()
 
@@ -69,3 +65,21 @@ func _get_shot_rate() -> int:
 		ret = 9999999
 
 	return ret
+
+func _create_shot(deg:float, speed:float):
+	var obj:Area2D = null
+	if Common.is_trail():
+		obj = Shot2Obj.instance()
+		obj.position = position
+		var v = Vector2()
+		var rad = deg2rad(270 + rand_range(-45, 45))
+		var spd = rand_range(100, 1000)
+		v.x = cos(rad) * spd
+		v.y = -sin(rad) * spd
+		obj.set_velocity(v)
+	else:
+		obj = ShotObj.instance()
+		obj.position = position
+		obj.set_velocity(deg, speed)
+	Common.get_layer("shot").add_child(obj)
+	return obj

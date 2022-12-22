@@ -6,6 +6,7 @@ const CENTER_Y = 600.0 / 2
 
 onready var _camera = $MainCamera
 
+onready var _main_layer = $MainLayer
 onready var _shot_layer = $ShotLayer
 onready var _particle_layer = $ParticleLayer
 onready var _hdr = $WorldEnvironment
@@ -39,6 +40,7 @@ onready var _hdr_txt = $UILayer/HDRButton/Label
 
 func _ready() -> void:
 	var layers = {
+		"main": _main_layer,
 		"shot": _shot_layer,
 		"particle": _particle_layer,
 	}

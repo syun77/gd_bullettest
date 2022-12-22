@@ -105,3 +105,14 @@ func set_trail(b:bool) -> void:
 	_is_trail = b
 func is_trail() -> bool:
 	return _is_trail
+
+## 角度差を求める.
+func diff_angle(now:float, next:float) -> float:
+	# 角度差を求める.
+	var d = next - now
+	# 0.0〜360.0にする.
+	d -= floor(d / 360.0) * 360.0
+	# -180.0〜180.0の範囲にする.
+	if d > 180.0:
+		d -= 360.0
+	return d
