@@ -99,10 +99,10 @@ environment = SubResource( 5 )
 layer = 10
 
 [node name="ChangeSprButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 8.0
-margin_right = 708.0
-margin_bottom = 48.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 84.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="UILayer/ChangeSprButton"]
 margin_left = 72.0
@@ -112,10 +112,10 @@ theme = ExtResource( 3 )
 text = "弾のスプライト変更"
 
 [node name="OffsetButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 48.0
-margin_right = 708.0
-margin_bottom = 88.0
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 84.0
+margin_bottom = 96.0
 
 [node name="Label" type="Label" parent="UILayer/OffsetButton"]
 margin_left = 72.0
@@ -125,10 +125,10 @@ theme = ExtResource( 3 )
 text = "発射位置をオフセットする"
 
 [node name="ScatterButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 88.0
-margin_right = 708.0
-margin_bottom = 128.0
+margin_left = 8.0
+margin_top = 96.0
+margin_right = 84.0
+margin_bottom = 136.0
 
 [node name="Label" type="Label" parent="UILayer/ScatterButton"]
 margin_left = 72.0
@@ -138,10 +138,10 @@ theme = ExtResource( 3 )
 text = "弾の発射方向をバラす"
 
 [node name="ScatterRange" type="HSlider" parent="UILayer"]
-margin_left = 688.0
-margin_top = 128.0
-margin_right = 872.0
-margin_bottom = 144.0
+margin_left = 64.0
+margin_top = 136.0
+margin_right = 248.0
+margin_bottom = 152.0
 min_value = 1.0
 max_value = 32.0
 value = 5.0
@@ -155,10 +155,10 @@ theme = ExtResource( 3 )
 text = "範囲"
 
 [node name="ParticleButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 160.0
-margin_right = 708.0
-margin_bottom = 200.0
+margin_left = 8.0
+margin_top = 168.0
+margin_right = 84.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="UILayer/ParticleButton"]
 margin_left = 72.0
@@ -168,10 +168,10 @@ theme = ExtResource( 3 )
 text = "ヒットパーティクル表示"
 
 [node name="CameraShakeButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 200.0
-margin_right = 708.0
-margin_bottom = 240.0
+margin_left = 8.0
+margin_top = 208.0
+margin_right = 84.0
+margin_bottom = 248.0
 
 [node name="Label" type="Label" parent="UILayer/CameraShakeButton"]
 margin_left = 72.0
@@ -181,10 +181,10 @@ theme = ExtResource( 3 )
 text = "スクリーンシェイク"
 
 [node name="HitShakeButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 240.0
-margin_right = 708.0
-margin_bottom = 280.0
+margin_left = 8.0
+margin_top = 248.0
+margin_right = 84.0
+margin_bottom = 288.0
 
 [node name="Label" type="Label" parent="UILayer/HitShakeButton"]
 margin_left = 72.0
@@ -194,10 +194,10 @@ theme = ExtResource( 3 )
 text = "ヒットシェイク"
 
 [node name="KnockBackButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 280.0
-margin_right = 708.0
-margin_bottom = 320.0
+margin_left = 8.0
+margin_top = 288.0
+margin_right = 84.0
+margin_bottom = 328.0
 
 [node name="Label" type="Label" parent="UILayer/KnockBackButton"]
 margin_left = 72.0
@@ -207,10 +207,10 @@ theme = ExtResource( 3 )
 text = "ノックバック"
 
 [node name="HitSlowButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 320.0
-margin_right = 708.0
-margin_bottom = 360.0
+margin_left = 8.0
+margin_top = 328.0
+margin_right = 84.0
+margin_bottom = 368.0
 
 [node name="Label" type="Label" parent="UILayer/HitSlowButton"]
 margin_left = 72.0
@@ -220,10 +220,10 @@ theme = ExtResource( 3 )
 text = "ヒットストップ・スロー"
 
 [node name="HitSlowRate" type="HSlider" parent="UILayer"]
-margin_left = 688.0
-margin_top = 360.0
-margin_right = 872.0
-margin_bottom = 376.0
+margin_left = 64.0
+margin_top = 368.0
+margin_right = 248.0
+margin_bottom = 384.0
 max_value = 80.0
 value = 50.0
 
@@ -236,10 +236,10 @@ theme = ExtResource( 3 )
 text = "速度"
 
 [node name="BlurButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 376.0
-margin_right = 708.0
-margin_bottom = 416.0
+margin_left = 8.0
+margin_top = 384.0
+margin_right = 84.0
+margin_bottom = 424.0
 
 [node name="Label" type="Label" parent="UILayer/BlurButton"]
 margin_left = 72.0
@@ -249,10 +249,10 @@ theme = ExtResource( 3 )
 text = "ブラー"
 
 [node name="TrailButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 416.0
-margin_right = 708.0
-margin_bottom = 456.0
+margin_left = 8.0
+margin_top = 424.0
+margin_right = 84.0
+margin_bottom = 464.0
 
 [node name="Label" type="Label" parent="UILayer/TrailButton"]
 margin_left = 72.0
@@ -262,10 +262,10 @@ theme = ExtResource( 3 )
 text = "トレイル"
 
 [node name="HDRButton" type="CheckButton" parent="UILayer"]
-margin_left = 632.0
-margin_top = 456.0
-margin_right = 708.0
-margin_bottom = 496.0
+margin_left = 8.0
+margin_top = 464.0
+margin_right = 84.0
+margin_bottom = 504.0
 
 [node name="Label" type="Label" parent="UILayer/HDRButton"]
 margin_left = 72.0
