@@ -35,7 +35,7 @@ func get_layer(name:String) -> CanvasLayer:
 	return _layers[name]
 
 func add_particle(pos:Vector2, t:float, deg:float, speed:float):
-	var p = ParticleObj.instance()
+	var p = ParticleObj.instantiate() as Particle
 	p.position = pos
 	p.start(t, deg, speed)
 	get_layer("particle").add_child(p)

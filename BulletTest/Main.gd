@@ -4,39 +4,44 @@ extends Node2D
 const CENTER_X = 1024.0 / 2
 const CENTER_Y = 600.0 / 2
 
-onready var _camera = $MainCamera
+@onready var _camera = $MainCamera
 
-onready var _main_layer = $MainLayer
-onready var _shot_layer = $ShotLayer
-onready var _particle_layer = $ParticleLayer
-onready var _hdr = $WorldEnvironment
+@onready var _bg_back = $BgLayer/BgBack
+@onready var _bg_sky = $BgLayer/BgSky
 
-onready var _change_spr = $UILayer/ChangeSprButton
-onready var _change_spr_txt = $UILayer/ChangeSprButton/Label
-onready var _scatter_btn = $UILayer/ScatterButton
-onready var _scatter_txt = $UILayer/ScatterButton/Label
-onready var _scatter_range = $UILayer/ScatterRange
-onready var _scatter_range_txt = $UILayer/ScatterRange/Label
-onready var _offset_btn = $UILayer/OffsetButton
-onready var _offset_txt = $UILayer/OffsetButton/Label
-onready var _particle_btn = $UILayer/ParticleButton
-onready var _particle_txt = $UILayer/ParticleButton/Label
-onready var _camshake_btn = $UILayer/CameraShakeButton
-onready var _camshake_txt = $UILayer/CameraShakeButton/Label
-onready var _hitshake_btn = $UILayer/HitShakeButton
-onready var _hitshake_txt = $UILayer/HitShakeButton/Label
-onready var _knockback_btn = $UILayer/KnockBackButton
-onready var _knockback_txt = $UILayer/KnockBackButton/Label
-onready var _hitslow_btn = $UILayer/HitSlowButton
-onready var _hitslow_txt = $UILayer/HitSlowButton/Label
-onready var _hitslowspeed_rate = $UILayer/HitSlowRate
-onready var _hitslowspeed_rate_txt = $UILayer/HitSlowRate/Label
-onready var _blur_btn = $UILayer/BlurButton
-onready var _blur_txt = $UILayer/BlurButton/Label
-onready var _trail_btn = $UILayer/TrailButton
-onready var _trail_txt = $UILayer/TrailButton/Label
-onready var _hdr_btn = $UILayer/HDRButton
-onready var _hdr_txt = $UILayer/HDRButton/Label
+@onready var _main_layer = $MainLayer
+@onready var _shot_layer = $ShotLayer
+@onready var _particle_layer = $ParticleLayer
+@onready var _hdr = $WorldEnvironment
+
+@onready var _change_spr = $UILayer/ChangeSprButton
+@onready var _change_spr_txt = $UILayer/ChangeSprButton/Label
+@onready var _scatter_btn = $UILayer/ScatterButton
+@onready var _scatter_txt = $UILayer/ScatterButton/Label
+@onready var _scatter_range = $UILayer/ScatterRange
+@onready var _scatter_range_txt = $UILayer/ScatterRange/Label
+@onready var _offset_btn = $UILayer/OffsetButton
+@onready var _offset_txt = $UILayer/OffsetButton/Label
+@onready var _particle_btn = $UILayer/ParticleButton
+@onready var _particle_txt = $UILayer/ParticleButton/Label
+@onready var _camshake_btn = $UILayer/CameraShakeButton
+@onready var _camshake_txt = $UILayer/CameraShakeButton/Label
+@onready var _hitshake_btn = $UILayer/HitShakeButton
+@onready var _hitshake_txt = $UILayer/HitShakeButton/Label
+@onready var _knockback_btn = $UILayer/KnockBackButton
+@onready var _knockback_txt = $UILayer/KnockBackButton/Label
+@onready var _hitslow_btn = $UILayer/HitSlowButton
+@onready var _hitslow_txt = $UILayer/HitSlowButton/Label
+@onready var _hitslowspeed_rate = $UILayer/HitSlowRate
+@onready var _hitslowspeed_rate_txt = $UILayer/HitSlowRate/Label
+@onready var _blur_btn = $UILayer/BlurButton
+@onready var _blur_txt = $UILayer/BlurButton/Label
+@onready var _trail_btn = $UILayer/TrailButton
+@onready var _trail_txt = $UILayer/TrailButton/Label
+@onready var _hdr_btn = $UILayer/HDRButton
+@onready var _hdr_txt = $UILayer/HDRButton/Label
+
+var _ofs_u = 0.0
 
 func _ready() -> void:
 	var layers = {
@@ -48,94 +53,99 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if _change_spr.pressed:
+	# UVオフセット値をシェーダーに渡す
+	_ofs_u += delta
+	_bg_back.material.set_shader_parameter("ofs_uv", Vector2(_ofs_u * 0.1, 0.0))
+	_bg_sky.material.set_shader_parameter("ofs_uv", Vector2(_ofs_u * 0.05, 0.0))
+		
+	if _change_spr.button_pressed:
 		Common.set_change_spr(true)
-		_change_spr_txt.modulate = Color.white
+		_change_spr_txt.modulate = Color.WHITE
 	else:
 		Common.set_change_spr(false)
-		_change_spr_txt.modulate = Color.dimgray
+		_change_spr_txt.modulate = Color.DIM_GRAY
 
-	if _scatter_btn.pressed:
+	if _scatter_btn.button_pressed:
 		Common.set_scatter(true)
-		_scatter_txt.modulate = Color.white
-		_scatter_range_txt.modulate = Color.white
+		_scatter_txt.modulate = Color.WHITE
+		_scatter_range_txt.modulate = Color.WHITE
 	else:
 		Common.set_scatter(false)
-		_scatter_txt.modulate = Color.dimgray
-		_scatter_range_txt.modulate = Color.dimgray
+		_scatter_txt.modulate = Color.DIM_GRAY
+		_scatter_range_txt.modulate = Color.DIM_GRAY
 	
 	var rng = _scatter_range.value
 	Common.set_scatter_range(rng)
 	_scatter_range_txt.text = "範囲 ±%d"%rng
 
-	if _offset_btn.pressed:
+	if _offset_btn.button_pressed:
 		Common.set_offset(true)
-		_offset_txt.modulate = Color.white
+		_offset_txt.modulate = Color.WHITE
 	else:
 		Common.set_offset(false)
-		_offset_txt.modulate = Color.dimgray
+		_offset_txt.modulate = Color.DIM_GRAY
 
-	if _particle_btn.pressed:
+	if _particle_btn.button_pressed:
 		Common.set_particle(true)
-		_particle_txt.modulate = Color.white
+		_particle_txt.modulate = Color.WHITE
 	else:
 		Common.set_particle(false)
-		_particle_txt.modulate = Color.dimgray
+		_particle_txt.modulate = Color.DIM_GRAY
 
-	if _camshake_btn.pressed:
+	if _camshake_btn.button_pressed:
 		Common.set_screen_shake(true)
-		_camshake_txt.modulate = Color.white
+		_camshake_txt.modulate = Color.WHITE
 	else:
 		Common.set_screen_shake(false)
-		_camshake_txt.modulate = Color.dimgray
+		_camshake_txt.modulate = Color.DIM_GRAY
 
-	if _hitshake_btn.pressed:
+	if _hitshake_btn.button_pressed:
 		Common.set_enemy_shake(true)
-		_hitshake_txt.modulate = Color.white
+		_hitshake_txt.modulate = Color.WHITE
 	else:
 		Common.set_enemy_shake(false)
-		_hitshake_txt.modulate = Color.dimgray
+		_hitshake_txt.modulate = Color.DIM_GRAY
 	
-	if _knockback_btn.pressed:
+	if _knockback_btn.button_pressed:
 		Common.set_knock_back(true)
-		_knockback_txt.modulate = Color.white
+		_knockback_txt.modulate = Color.WHITE
 	else:
 		Common.set_knock_back(false)
-		_knockback_txt.modulate = Color.dimgray
+		_knockback_txt.modulate = Color.DIM_GRAY
 	
-	if _hitslow_btn.pressed:
+	if _hitslow_btn.button_pressed:
 		Common.set_hitslow(true)
-		_hitslow_txt.modulate = Color.white
-		_hitslowspeed_rate_txt.modulate = Color.white
+		_hitslow_txt.modulate = Color.WHITE
+		_hitslowspeed_rate_txt.modulate = Color.WHITE
 	else:
 		Common.set_hitslow(false)
-		_hitslow_txt.modulate = Color.dimgray
-		_hitslowspeed_rate_txt.modulate = Color.dimgray
+		_hitslow_txt.modulate = Color.DIM_GRAY
+		_hitslowspeed_rate_txt.modulate = Color.DIM_GRAY
 	
 	var speed_rate = _hitslowspeed_rate.value
 	Common.set_hitslow_rate(speed_rate)
 	_hitslowspeed_rate_txt.text = "速度 x %d%%"%speed_rate
 	
-	if _blur_btn.pressed:
+	if _blur_btn.button_pressed:
 		Common.set_blur(true)
-		_blur_txt.modulate = Color.white
+		_blur_txt.modulate = Color.WHITE
 	else:
 		Common.set_blur(false)
-		_blur_txt.modulate = Color.dimgray
+		_blur_txt.modulate = Color.DIM_GRAY
 	
-	if _trail_btn.pressed:
+	if _trail_btn.button_pressed:
 		Common.set_trail(true)
-		_trail_txt.modulate = Color.white
+		_trail_txt.modulate = Color.WHITE
 	else:
 		Common.set_trail(false)
-		_trail_txt.modulate = Color.dimgray
+		_trail_txt.modulate = Color.DIM_GRAY
 	
-	if _hdr_btn.pressed:
+	if _hdr_btn.button_pressed:
 		_hdr.environment.glow_enabled = true
-		_hdr_txt.modulate = Color.white
+		_hdr_txt.modulate = Color.WHITE
 	else:
 		_hdr.environment.glow_enabled = false
-		_hdr_txt.modulate = Color.dimgray
+		_hdr_txt.modulate = Color.DIM_GRAY
 		
 	_update_screen_shake(delta)
 	Common.update_hitslow(delta)
@@ -145,5 +155,5 @@ func _update_screen_shake(delta:float) -> void:
 	var rate = Common.get_screen_shake_rate()
 	var v = 8.0 * rate
 	var h = 2.0 * rate
-	_camera.offset.x = rand_range(-v, v)
-	_camera.offset.y = rand_range(-h, h)
+	_camera.offset.x = randf_range(-v, v)
+	_camera.offset.y = randf_range(-h, h)

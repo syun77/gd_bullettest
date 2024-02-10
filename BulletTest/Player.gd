@@ -33,7 +33,7 @@ func _shot() -> void:
 	
 	if Common.is_scatter():
 		var rng = Common.get_scatter_range()
-		deg += rand_range(-rng, rng)
+		deg += randf_range(-rng, rng)
 	
 	var spd = 1500
 	var shot = _create_shot(deg, spd)
@@ -45,8 +45,8 @@ func _shot() -> void:
 	if Common.is_screen_shake():
 		# ショットガン
 		for i in range(12):
-			var deg2 = deg + rand_range(-10, 10)
-			var speed = spd * rand_range(0.8, 1.0)
+			var deg2 = deg + randf_range(-10, 10)
+			var speed = spd * randf_range(0.8, 1.0)
 			_create_shot(deg2, speed)
 		# カメラ揺れ開始.
 		Common.start_screen_shake()
@@ -68,16 +68,16 @@ func _get_shot_rate() -> int:
 func _create_shot(deg:float, speed:float):
 	var obj:Area2D = null
 	if Common.is_trail():
-		obj = Shot2Obj.instance()
+		obj = Shot2Obj.instantiate()
 		obj.position = position
 		var v = Vector2()
-		var rad = deg2rad(270 + rand_range(-45, 45))
-		var spd = rand_range(100, 1000)
+		var rad = deg_to_rad(270 + randf_range(-45, 45))
+		var spd = randf_range(100, 1000)
 		v.x = cos(rad) * spd
 		v.y = -sin(rad) * spd
 		obj.set_velocity(v)
 	else:
-		obj = ShotObj.instance()
+		obj = ShotObj.instantiate()
 		obj.position = position
 		obj.set_velocity(deg, speed)
 	Common.get_layer("shot").add_child(obj)

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dl44ei6ppju7j"]
+
+[ext_resource type="FontFile" uid="uid://bdxix5kocidej" path="res://fonts/mplus-1c-regular.ttf" id="1_nisaa"]
+
+[resource]
+font = ExtResource("1_nisaa")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)

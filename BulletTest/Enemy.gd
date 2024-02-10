@@ -4,7 +4,7 @@ class_name Enemy
 
 const TIMER_SHAKE = 1.0
 
-onready var _spr = $Enemy
+@onready var _spr = $Enemy
 
 var _start_pos = Vector2.ZERO
 var _shake_timer = 0.0
@@ -12,7 +12,7 @@ var _knockback_velocity = Vector2()
 var _cnt = 0
 
 # ノイズテクスチャ
-var _noise := OpenSimplexNoise.new()
+var _noise := FastNoiseLite.new()
 var _noise_y := 0
 
 func hit(vel:Vector2) -> void:
@@ -30,12 +30,12 @@ func _process(delta: float) -> void:
 	delta *= Common.get_hitslow_rate()
 	
 	_cnt += 1
-	_spr.modulate = Color.white
+	_spr.modulate = Color.WHITE
 	if _knockback_velocity.length() > 0.1:
 		position += _knockback_velocity * delta
 		_knockback_velocity *= 0.9
 		if _knockback_velocity.length() > 10:
-			_spr.modulate = Color.red # ノックバック中は赤色.
+			_spr.modulate = Color.RED # ノックバック中は赤色.
 	else:
 		# 元の位置に戻る.
 		position += (_start_pos - position) * 0.1
