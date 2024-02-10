@@ -21,11 +21,12 @@ shader_parameter/ofs_uv = null
 
 [sub_resource type="Environment" id="5"]
 background_mode = 3
-background_energy_multiplier = 6.9
-background_canvas_max_layer = 20
+background_canvas_max_layer = 5
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 0.24
+glow_intensity = 0.25
+glow_strength = 1.43
+glow_bloom = 1.0
 glow_blend_mode = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1g6sf"]
@@ -57,6 +58,7 @@ texture = ExtResource("6")
 centered = false
 
 [node name="MainLayer" type="CanvasLayer" parent="."]
+layer = 10
 follow_viewport_enabled = true
 
 [node name="Player" parent="MainLayer" instance=ExtResource("2")]

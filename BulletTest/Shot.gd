@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var _spr = $Sprite2D
-@onready var _line = $Line2D
+#@onready var _line = $Line2D
 
 var _velocity = Vector2()
 

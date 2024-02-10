@@ -18,8 +18,8 @@ var _noise_y := 0
 func hit(vel:Vector2) -> void:
 	if Common.is_knock_back():
 		# ノックバックの力発生.
-		_knockback_velocity = vel * 0.1
-	elif Common.is_enemy_shake():
+		_knockback_velocity = vel * 0.05
+	if Common.is_enemy_shake():
 		_shake_timer = 1.0
 	
 	if Common.is_hitslow():
@@ -44,10 +44,12 @@ func _process(delta: float) -> void:
 	if _shake_timer > 0:
 		_shake_timer -= delta
 		var t = _shake_timer
+		_spr.position.x = randf_range(-t, t) * 8
+		_spr.position.y = randf_range(-t, t) * 4
 		# 残り時間の幅でノイズテクスチャを使って揺らす
-		_noise_y += 1000 * delta # 動かす
-		_spr.position.x = t * (16 * _noise.get_noise_2d(_noise.seed * 2, _noise_y))
-		_spr.position.y = t * (16 * _noise.get_noise_2d(_noise.seed * 3, _noise_y))
+		#_noise_y += 1000 * delta # 動かす
+		#_spr.position.x = t * (16 * _noise.get_noise_2d(_noise.seed * 2, _noise_y))
+		#_spr.position.y = t * (16 * _noise.get_noise_2d(_noise.seed * 3, _noise_y))
 
 func _ready() -> void:
 	_start_pos = position

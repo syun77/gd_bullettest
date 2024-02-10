@@ -1,7 +1,7 @@
 extends Node
 
 const ParticleObj = preload("res://Particle.tscn")
-const TIMER_SCREEN_SHAKE = 1.0
+const TIMER_SCREEN_SHAKE = 0.5
 
 var _change_spr = false
 var _is_scatter = false
@@ -92,7 +92,7 @@ func get_hitslow_rate() -> float:
 		return 1.0 # 無効.
 	return _hitslow_rate / 100.0
 func start_hitslow() -> void:
-	_hitslow_timer = 1.0
+	_hitslow_timer = 0.03
 func update_hitslow(delta:float) -> void:
 	_hitslow_timer -= delta
 	
