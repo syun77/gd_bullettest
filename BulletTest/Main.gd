@@ -143,9 +143,11 @@ func _process(delta: float) -> void:
 	if _hdr_btn.button_pressed:
 		_hdr.environment.glow_enabled = true
 		_hdr_txt.modulate = Color.WHITE
+		_bg_back.visible = false
 	else:
 		_hdr.environment.glow_enabled = false
 		_hdr_txt.modulate = Color.DIM_GRAY
+		_bg_back.visible = true
 		
 	_update_screen_shake(delta)
 	Common.update_hitslow(delta)

@@ -24,10 +24,10 @@ background_mode = 3
 background_canvas_max_layer = 5
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 0.25
-glow_strength = 1.43
+glow_intensity = 1.39
 glow_bloom = 1.0
 glow_blend_mode = 0
+glow_hdr_luminance_cap = 178.9
 
 [sub_resource type="LabelSettings" id="LabelSettings_1g6sf"]
 font = ExtResource("9_l2v8e")
