@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://b4prlovilatdg"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Player.tscn" id="2"]
-[ext_resource type="Shader" path="res://bg_back.gdshader" id="2_g30f6"]
+[ext_resource type="Script" uid="uid://cj8oobcplk2dh" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://coyl1iuw5n3eo" path="res://Player.tscn" id="2"]
+[ext_resource type="Shader" uid="uid://clpppyyrtf3ve" path="res://bg_back.gdshader" id="2_g30f6"]
 [ext_resource type="Theme" uid="uid://bny3a7ys4mji1" path="res://fonts/new_theme.tres" id="3"]
-[ext_resource type="Shader" path="res://BgSky.gdshader" id="3_wn3rf"]
-[ext_resource type="PackedScene" path="res://Enemy.tscn" id="4"]
+[ext_resource type="Shader" uid="uid://cdgvitawvybmx" path="res://BgSky.gdshader" id="3_wn3rf"]
+[ext_resource type="PackedScene" uid="uid://en2lvhj28gyc" path="res://Enemy.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://d1xdlgu38x1ss" path="res://bg_back.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://si7qmnds546c" path="res://bg_sky.png" id="6"]
 [ext_resource type="LabelSettings" uid="uid://dl44ei6ppju7j" path="res://fonts/label_settings.tres" id="8_5h3f0"]
@@ -13,11 +13,11 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1juga"]
 shader = ExtResource("2_g30f6")
-shader_parameter/ofs_uv = null
+shader_parameter/ofs_uv = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xi1m6"]
 shader = ExtResource("3_wn3rf")
-shader_parameter/ofs_uv = null
+shader_parameter/ofs_uv = Vector2(0, 0)
 
 [sub_resource type="Environment" id="5"]
 background_mode = 3

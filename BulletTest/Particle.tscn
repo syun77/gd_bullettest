@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://xm5cxx4ptkax"]
 
-[ext_resource type="Script" path="res://Particle.gd" id="1"]
+[ext_resource type="Script" uid="uid://ce1nby3mgacro" path="res://Particle.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c7y1hqsnt7bmb" path="res://shot2.png" id="2"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
